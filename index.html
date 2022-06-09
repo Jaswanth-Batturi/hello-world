@@ -4,11 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#4dbaa8" />
+    <link rel="manifest" href="manifest.json">
     <title>Document</title>
 </head>
 <body>
 
-    <h1> Hello World </h1>
-  
- </body>
- </html>
+    <h1> Web App </h1>
+
+    Userame: <input type = "text" name = "username" id = "username" oninput="fun_username()">  <br>
+    Age: <input type = "number" name = "age" id = "age" oninput="fun_age()">  <br>
+
+    <script>
+
+      //Check to see if localStorage is supported
+      if(window.localStorage)
+            console.log("Local Storage Supported")
+      else
+          console.log("No support for Local Storage")
+
+      function fun_username() {
+            var name = document.getElementById("username").value;
+            window.localStorage.setItem("username", name)
+        }
+        
+        function fun_age() {
+            var age = document.getElementById("age").value;
+            window.localStorage.setItem("age", age)
+        }
+
+        document.getElementById("username").value = window.localStorage.getItem("username")
+        document.getElementById("age").value = window.localStorage.getItem("age")
+
+    </script>
+
+
+<script src="./sw.js"> </script>
+
+</body>
+</html>
